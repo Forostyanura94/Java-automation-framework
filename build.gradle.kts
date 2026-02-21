@@ -17,6 +17,13 @@ dependencies {
     testImplementation("org.testng:testng:7.11.0")
     implementation ("com.fasterxml.jackson.core:jackson-databind:2.17.2")
     testImplementation("io.rest-assured:rest-assured:5.5.6")
+    testImplementation ("io.qameta.allure:allure-junit5:2.29.1")
+    implementation ("io.qameta.allure:allure-rest-assured:2.29.1")
+    compileOnly("org.projectlombok:lombok:1.18.38")
+    annotationProcessor("org.projectlombok:lombok:1.18.38")
+
+    testCompileOnly("org.projectlombok:lombok:1.18.38")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.38")
 }
 
 tasks.test {
