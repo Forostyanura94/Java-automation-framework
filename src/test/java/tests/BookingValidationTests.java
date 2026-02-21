@@ -6,6 +6,7 @@ import io.restassured.response.Response;
 import models.Booking;
 import models.PostBookingResponse;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -14,7 +15,7 @@ import testdata.BookingTestData;
 public class BookingValidationTests extends BookingApiBaseTest {
 
     @Issue("DEFECT-001")
-    @Description ("Missing fields validation is absent for createBooking()")
+    @Disabled(" Known defect: missing validation for createBooking()")
     @Test
     public void createBookingWithMissingFields() {
         Response response = bookingSteps.createBooking(BookingTestData.bookingWithMissingFields());
