@@ -41,8 +41,8 @@ jobs:
       run: ./gradlew clean test
       env:
        TEST_ENV: test
-       USERNAME: ${{ secrets.ADMIN_USERNAME }}
-       PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+       ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
+       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
 
     - name: Upload Allure results
       if: always()
