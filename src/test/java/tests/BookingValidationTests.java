@@ -1,6 +1,5 @@
 package tests;
 
-import io.qameta.allure.Description;
 import io.qameta.allure.Issue;
 import io.restassured.response.Response;
 import models.Booking;
