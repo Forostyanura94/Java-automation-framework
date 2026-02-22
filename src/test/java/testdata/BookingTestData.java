@@ -1,6 +1,7 @@
 package testdata;
 
 import config.TestConfig;
+import constants.Constants;
 import models.Booking;
 import models.BookingDates;
 
@@ -67,8 +68,8 @@ public class BookingTestData {
 
     public static Map<String, Object> adminUser() {
         Map<String, Object> adminUser = new HashMap<>();
-        adminUser.put("username", TestConfig.get("username"));
-        adminUser.put("password", TestConfig.get("password"));
+        adminUser.put("username", TestConfig.get(Constants.ADMIN_USERNAME));
+        adminUser.put("password", TestConfig.get(Constants.ADMIN_PASSWORD));
         return adminUser;
     }
 
