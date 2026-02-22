@@ -16,7 +16,7 @@ public final class TestConfig {
     }
 
     private static void load(String fileName) {
-        try (InputStream is = TestConfig.class.getClassLoader().getResourceAsStream(fileName)) {
+        try (InputStream is = open(fileName)) {
             if (is != null) {
                 PROPS.load(is);
             }
@@ -25,16 +25,19 @@ public final class TestConfig {
         }
     }
 
+    private static InputStream open(String fileName) {
+        ClassLoader cl = TestConfig.class.getClassLoader();
+        InputStream is = cl.getResourceAsStream(fileName);
+        if (is != null) return is;
+        return cl.getResourceAsStream(fileName + ".example");
+    }
+
     public static String get(String key) {
         String envKey = key.toUpperCase().replace('.', '_');
 
-        boolean isCi = "true".equalsIgnoreCase(System.getenv("CI"));
-
-        if (isCi) {
-            String fromEnv = System.getenv(envKey);
-            if (fromEnv != null && !fromEnv.isBlank()) {
-                return fromEnv.trim();
-            }
+        String fromEnv = System.getenv(envKey);
+        if (fromEnv != null && !fromEnv.isBlank()) {
+            return fromEnv.trim();
         }
 
         String fromFile = PROPS.getProperty(key);
