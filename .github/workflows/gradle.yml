@@ -65,6 +65,7 @@ jobs:
 
   dependency-submission:
     needs: build
+    if: always()
     runs-on: ubuntu-latest
     permissions:
       contents: write
