@@ -38,6 +38,6 @@ public final class TestConfig {
             return fromFile;
         }
 
-        throw new IllegalStateException("Missing config key: " + key);
+        throw new IllegalStateException("Missing config key: " + key + " (env: " + envKey + ")");
     }
 }
