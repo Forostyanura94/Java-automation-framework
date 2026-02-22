@@ -28,13 +28,9 @@ public final class TestConfig {
     public static String get(String key) {
         String envKey = key.toUpperCase().replace('.', '_');
 
-        boolean isCi = "true".equalsIgnoreCase(System.getenv("CI"));
-
-        if (isCi) {
             String fromEnv = System.getenv(envKey);
             if (fromEnv != null && !fromEnv.isBlank()) {
                 return fromEnv.trim();
-            }
         }
 
         String fromFile = PROPS.getProperty(key);
