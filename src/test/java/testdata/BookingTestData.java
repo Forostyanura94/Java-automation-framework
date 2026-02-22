@@ -67,8 +67,8 @@ public class BookingTestData {
 
     public static Map<String, Object> adminUser() {
         Map<String, Object> adminUser = new HashMap<>();
-        adminUser.put("username", TestConfig.get("username"));
-        adminUser.put("password", TestConfig.get("password"));
+        adminUser.put("username", TestConfig.get("admin_username"));
+        adminUser.put("password", TestConfig.get("admin_password"));
         return adminUser;
     }
 
