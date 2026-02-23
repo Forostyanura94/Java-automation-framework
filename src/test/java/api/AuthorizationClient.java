@@ -7,11 +7,10 @@ import io.restassured.http.ContentType;
 import testdata.BookingTestData;
 
 public class AuthorizationClient {
-    static String baseURI = TestConfig.get("baseURI");
 
     public static String getAuthToken() {
         return RestAssured.given()
-                .baseUri(baseURI)
+                .baseUri(TestConfig.get(Constants.BASE_URI))
                 .contentType(ContentType.JSON)
                 .body(BookingTestData.adminUser())
                 .when()
