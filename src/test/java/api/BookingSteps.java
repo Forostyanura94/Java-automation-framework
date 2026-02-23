@@ -12,12 +12,9 @@ import static testdata.BookingTestData.*;
 
 
 public class BookingSteps {
-
-    String baseURI = TestConfig.get("baseURI");
-
     @Step
     public Response createBooking(Object body) {
-        return given(Specifications.requestSpecifications(baseURI, BookingApiTests.token))
+        return given(Specifications.requestSpecifications(TestConfig.get(BASE_URI), BookingApiTests.token))
                 .body(body)
                 .when()
                 .post(bookingEndpoint)
@@ -31,7 +28,7 @@ public class BookingSteps {
 
     @Step
     public Response getBookingById(int id) {
-        return given(Specifications.requestSpecifications(baseURI, BookingApiTests.token))
+        return given(Specifications.requestSpecifications(TestConfig.get(BASE_URI), BookingApiTests.token))
                 .when()
                 .get(bookingEndpoint + "/" + id)
                 .andReturn();
@@ -39,7 +36,7 @@ public class BookingSteps {
 
     @Step
     public Response updateBooking(String token, int id, Object body) {
-        return given(Specifications.requestSpecifications(baseURI, token))
+        return given(Specifications.requestSpecifications(TestConfig.get(BASE_URI), token))
                 .cookie("token", token)
                 .body(body)
                 .when()
@@ -54,8 +51,7 @@ public class BookingSteps {
 
     @Step
     public Response removeBooking(int id, String token) {
-        return given(Specifications.requestSpecifications(baseURI, token))
-                .baseUri(baseURI)
+        return given(Specifications.requestSpecifications(TestConfig.get(BASE_URI), token))
                 .when()
                 .delete(bookingEndpoint + "/" + id)
                 .andReturn();
@@ -68,7 +64,7 @@ public class BookingSteps {
 
     @Step
     public Response partialUpdate(String token, int id, Object body) {
-        return given(Specifications.requestSpecifications(baseURI, token))
+        return given(Specifications.requestSpecifications(TestConfig.get(BASE_URI), token))
                 .body(body)
                 .when()
                 .patch(bookingEndpoint + "/" + id)
